@@ -7,18 +7,16 @@ passport.use(
     {
       clientID:     process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL:  '/api/auth/google/callback',
+      callbackURL:  process.env.GOOGLE_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
         // Check if user already exists with this Google ID
         let user = await User.findOne({ googleId: profile.id })
-
         if (user) {
           // Existing Google user — just return them
           return done(null, user)
         }
-
         // Check if email already registered with password
         user = await User.findOne({ email: profile.emails[0].value })
         if (user) {
@@ -27,15 +25,13 @@ passport.use(
           await user.save()
           return done(null, user)
         }
-
         // Brand new user — create account
         user = await User.create({
           name:     profile.displayName,
           email:    profile.emails[0].value,
           googleId: profile.id,
-          password: Math.random().toString(36).slice(-16), // random password they'll never use
+          password: Math.random().toString(36).slice(-16),
         })
-
         return done(null, user)
       } catch (error) {
         return done(error, null)
