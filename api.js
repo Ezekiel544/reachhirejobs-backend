@@ -50,7 +50,7 @@ export const ordersAPI = {
   create: (formData) =>
     request('/orders', {
       method: 'POST',
-      body: formData, // FormData with files
+      body: formData, // FormData with files here
     }),
 
   getAll: () => request('/orders'),
