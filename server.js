@@ -12,9 +12,10 @@ connectDB()
 const app = express()
 
 const allowedOrigins = [
-  'https://reachhirejobs-frontend.vercel.app',
+  'https://jobtomail.vercel.app',
   'https://swiftyapply.vercel.app',
   'http://localhost:5173',
+  
 ]
 
 app.use(cors({
