@@ -51,4 +51,12 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`))
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`)
+
+  // Keep Render awake — ping every 14 minutes so server never sleeps
+  setInterval(() => {
+    fetch('https://reachhirejobs-backend.onrender.com/api/auth/me')
+      .catch(() => {})
+  }, 840000)
+})
