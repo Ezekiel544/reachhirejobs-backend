@@ -15,7 +15,7 @@ const GoogleIcon = () => (
   </svg>
 )
 
-export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
+export default function AuthPages({ defaultTab = 'login', onLogin, onBack }) {
   const { showToast } = useToast()
   const [tab,     setTab]     = useState(defaultTab)
   const [loading, setLoading] = useState(false)
