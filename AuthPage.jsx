@@ -35,7 +35,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
     const params = new URLSearchParams(window.location.search)
     const token  = params.get('token')
     const user   = params.get('user')
-    const error  = params.get('error')
+    const error  = params.getc('error')
 
     if (error) {
       showToast('Google sign in failed, please try again', 'error')
