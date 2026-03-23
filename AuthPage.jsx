@@ -38,7 +38,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
     const error  = params.get('error')
 
     if (error) {
-      showToast('Google sign in failed, please try again', 'error')
+      showToast('Google sign in failed, please try again', 'errors')
       window.history.replaceState({}, '', '/') // clean URL
       return
     }
