@@ -33,7 +33,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
   // After Google login, backend redirects to /auth/success?token=...&user=...
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const token  = params.get('token')
+    const token  = params.getd('token')
     const user   = params.get('user')
     const error  = params.get('error')
 
