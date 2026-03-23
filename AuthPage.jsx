@@ -51,7 +51,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
         window.history.replaceState({}, '', '/') // clean URL
         onLogin(parsedUser)
       } catch {
-        showToast('Something went wrong with Google login', 'error')
+        showToast('Something went wrong with Google login', 'errors')
       }
     }
   }, [])
