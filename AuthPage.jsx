@@ -38,7 +38,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
     const error  = params.get('error')
 
     if (error) {
-      showToast('Google sign in failed, please try again', 'errors')
+      showToast('Google sign in failed, please try again', 'error')
       window.history.replaceState({}, '', '/') // clean URL
       return
     }
@@ -51,7 +51,7 @@ export default function AuthPage({ defaultTab = 'login', onLogin, onBack }) {
         window.history.replaceState({}, '', '/') // clean URL
         onLogin(parsedUser)
       } catch {
-        showToast('Something went wrong with Google login', 'error')
+        showToast('Something went wrong with Google login', 'errors')
       }
     }
   }, [])
